@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MentorApp - Tu Asistente Académico Personal</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Iconos (Lucide) -->
+    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide.min.js"></script>
+
+    <style>
+        /* Estilo base usando la fuente Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Clase para el efecto 'glow' en los botones */
+        .cta-glow {
+            box-shadow: 0 0 15px 0 rgba(20, 209, 255, 0.7);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .cta-glow:hover {
+            box-shadow: 0 0 25px 5px rgba(20, 209, 255, 0.7);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 overflow-x-hidden">
+
+    <!-- ===== Header / Navegación ===== -->
+    <header class="bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-700">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-2 text-2xl font-bold text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M12 2.69l.34.16a2.4 2.4 0 0 0-1.08 1.08L11.08 4 11 4.03l-.16.18a2.38 2.38 0 0 0-1.08 1.08L9.6 5.5l-.17.34a2.4 2.4 0 0 0 1.08 1.08L10.7 7l.21.08.18-.16a2.38 2.38 0 0 0 1.08-1.08l.17-.26.34-.17a2.4 2.4 0 0 0-1.08-1.08L12 2.7Z"></path><path d="m7 21 1.6-1.6"></path><path d="M14.2 15.2 18 11.4"></path><path d="M12.2 12.2 4 20.4"></path><path d="m11.4 18 3.8-3.8"></path><path d="M20.4 4 12.2 12.2"></path><path d="M1.6 11.6 3 10.2"></path><path d="m10.2 3-1.4 1.4"></path></svg>
+                <span class="tracking-tight">MentorApp</span>
+            </a>
+
+            <!-- Menú Desktop -->
+            <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+                <a href="#problema" class="text-gray-300 hover:text-cyan-400 transition-colors">El Problema</a>
+                <a href="#solucion" class="text-gray-300 hover:text-cyan-400 transition-colors">Solución</a>
+                <a href="#funciones" class="text-gray-300 hover:text-cyan-400 transition-colors">Funciones</a>
+                <a href="#equipo" class="text-gray-300 hover:text-cyan-400 transition-colors">Equipo</a>
+                <a href="#registro" class="bg-cyan-500 text-gray-900 font-semibold px-5 py-2 rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105">
+                    ¡Regístrate!
+                </a>
+            </div>
+
+            <!-- Botón Menú Móvil -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-cyan-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </nav>
+
+        <!-- Menú Móvil (Oculto) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900/95 px-6 pt-2 pb-6 border-t border-gray-700">
+            <a href="#problema" class="block py-3 text-lg text-gray-300 hover:text-cyan-400 transition-colors">El Problema</a>
+            <a href="#solucion" class="block py-3 text-lg text-gray-300 hover:text-cyan-400 transition-colors">Solución</a>
+            <a href="#funciones" class="block py-3 text-lg text-gray-300 hover:text-cyan-400 transition-colors">Funciones</a>
+            <a href="#equipo" class="block py-3 text-lg text-gray-300 hover:text-cyan-400 transition-colors">Equipo</a>
+            <a href="#registro" class="block mt-4 text-center bg-cyan-500 text-gray-900 font-semibold px-6 py-3 rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105">
+                ¡Regístrate!
+            </a>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+
+        <!-- ===== Sección Héroe ===== -->
+        <section id="heroe" class="container mx-auto px-6 py-24 md:py-32 text-center relative overflow-hidden">
+            <!-- Efecto de fondo -->
+            <div class="absolute -top-20 -left-20 w-72 h-72 bg-cyan-500/10 rounded-full filter blur-3xl opacity-50 animate-pulse"></div>
+            <div class="absolute -bottom-20 -right-20 w-96 h-96 bg-indigo-500/10 rounded-full filter blur-3xl opacity-50 animate-pulse" style="animation-delay: 2s;"></div>
+            
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <span class="text-cyan-400 font-semibold tracking-wider uppercase">De la UNAF para el mundo</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white mt-4 mb-6 leading-tight">
+                    ¿Olvidaste otra fecha de examen?
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                    La vida universitaria es caótica. Creamos un asistente inteligente que aprende de ti y te ayuda a conquistar tu semestre.
+                </p>
+                <a href="#registro" class="bg-cyan-500 text-gray-900 font-bold text-lg px-8 py-4 rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 cta-glow">
+                    Unirme a la Beta
+                </a>
+            </div>
+            
+            <!-- Imagen de la App (Placeholder) -->
+            <div class="relative z-10 mt-16 md:mt-24 max-w-4xl mx-auto">
+                <div class="aspect-video bg-gray-800/50 rounded-2xl shadow-2xl p-2 border border-gray-700">
+                    <img 
+                        src="preview.png" 
+                        alt="Vista previa de la aplicación MentorApp en un dispositivo" 
+                        class="rounded-lg object-cover w-full h-full"
+                        onerror="this.src='https://placehold.co/1200x675/111827/4ECDC4?text=Error+al+cargar+imagen'"
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Sección Problema ===== -->
+        <section id="problema" class="py-20 md:py-28 bg-gray-900">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="md:flex md:items-center md:space-x-12">
+                    <div class="md:w-1/2">
+                        <span class="text-cyan-400 font-semibold tracking-wider uppercase">El Problema</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-6">
+                            Las agendas comunes no entienden tu ritmo.
+                        </h2>
+                        <p class="text-lg text-gray-300 mb-6">
+                            Entre trabajos prácticos, fechas de finales, reuniones de grupo y tu vida personal, es normal sentirse abrumado. Las herramientas actuales son pasivas: tú tienes que hacer todo el trabajo de organización.
+                        </p>
+                        <ul class="space-y-4 text-lg text-gray-300">
+                            <li class="flex items-start space-x-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-400 mt-1 flex-shrink-0"></i>
+                                <span>Notificaciones genéricas que ignoras fácilmente.</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-400 mt-1 flex-shrink-0"></i>
+                                <span>Cero inteligencia para priorizar lo que de verdad importa.</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-400 mt-1 flex-shrink-0"></i>
+                                <span>No se adaptan a las necesidades de un estudiante.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2 mt-12 md:mt-0">
+                        <img 
+                            src="https://placehold.co/600x450/1F2937/FFFFFF?text=Caos+Académico" 
+                            alt="Gráfico mostrando confusión y estrés" 
+                            class="rounded-xl shadow-xl border border-gray-700"
+                            onerror="this.src='https://placehold.co/600x450/1F2937/FFFFFF?text=Error+al+cargar+imagen'"
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Sección Solución ===== -->
+        <section id="solucion" class="py-20 md:py-28 bg-gray-800/50">
+            <div class="container mx-auto px-6 max-w-5xl text-center">
+                <span class="text-cyan-400 font-semibold tracking-wider uppercase">La Solución</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-6 max-w-2xl mx-auto">
+                    Tu Asistente Académico Personal
+                </h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                    Creamos una aplicación de recordatorios inteligentes pensada por y para estudiantes. MentorApp no solo guarda tus fechas; **aprende de ti**. Su objetivo es ayudarte a organizar tu tiempo, evitar olvidos y aumentar tu productividad diaria.
+                </p>
+                <div class="bg-gray-900 border border-gray-700 rounded-xl p-8 max-w-2xl mx-auto shadow-2xl">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Nuestra Misión</h3>
+                    <p class="text-xl text-gray-300 italic">
+                        "Ayudar a las personas a gestionar su tiempo y responsabilidades de manera eficiente con un sistema inteligente y accesible."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Sección Funciones ===== -->
+        <section id="funciones" class="py-20 md:py-28 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-cyan-400 font-semibold tracking-wider uppercase">Funciones</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-6">
+                        Más que una simple agenda
+                    </h2>
+                    <p class="text-lg text-gray-300">
+                        Nos diferenciamos por nuestra estrategia de especialización, simplicidad y el uso de IA para crear una experiencia única.
+                    </p>
+                </div>
+
+                <!-- Grid de Funciones -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Tarjeta 1: IA -->
+                    <div class="bg-gray-800/50 border border-gray-700 p-8 rounded-xl shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-16 h-16 bg-cyan-500/10 text-cyan-400 rounded-full flex items-center justify-center mb-6 border border-cyan-500/30">
+                            <i data-lucide="brain-circuit" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-3">Análisis con IA</h3>
+                        <p class="text-gray-300">
+                            La app analiza tu rendimiento y te recomienda horas de estudio o te envía recordatorios con más antelación según tus necesidades.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 2: Recordatorios -->
+                    <div class="bg-gray-800/50 border border-gray-700 p-8 rounded-xl shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-16 h-16 bg-cyan-500/10 text-cyan-400 rounded-full flex items-center justify-center mb-6 border border-cyan-500/30">
+                            <i data-lucide="bell-ring" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-3">Recordatorios Proactivos</h3>
+                        <p class="text-gray-300">
+                            No solo recordatorios básicos. Recibe notificaciones inteligentes y personalizables para exámenes, entregas, reuniones y más.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 3: Gamificación -->
+                    <div class="bg-gray-800/50 border border-gray-700 p-8 rounded-xl shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-16 h-16 bg-cyan-500/10 text-cyan-400 rounded-full flex items-center justify-center mb-6 border border-cyan-500/30">
+                            <i data-lucide="award" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-3">Gamificación Motivacional</h3>
+                        <p class="text-gray-300">
+                            Gana puntos, insignias o premios virtuales por cumplir con tus tiempos de estudio y no olvidar tareas. ¡Organizarte puede ser divertido!
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 4: Sincronización -->
+                    <div class="bg-gray-800/50 border border-gray-700 p-8 rounded-xl shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-16 h-16 bg-cyan-500/10 text-cyan-400 rounded-full flex items-center justify-center mb-6 border border-cyan-500/30">
+                            <i data-lucide="refresh-cw" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-3">Sincronización Total</h3>
+                        <p class="text-gray-300">
+                            Compatible con Google Calendar, Outlook y más. Importa tus eventos y ten toda tu vida organizada en un solo lugar.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 5: Grupos (Futuro) -->
+                    <div class="bg-gray-800/50 border border-gray-700 p-8 rounded-xl shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-16 h-16 bg-cyan-500/10 text-cyan-400 rounded-full flex items-center justify-center mb-6 border border-cyan-500/30">
+                            <i data-lucide="users" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-3">Modo Colaborativo <span class="text-xs bg-indigo-500 text-white px-2 py-1 rounded-full ml-2">Pronto</span></h3>
+                        <p class="text-gray-300">
+                            Crea recordatorios compartidos para grupos de estudio, asigna tareas y asegúrate de que todo el equipo esté al día.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 6: Voz (Futuro) -->
+                    <div class="bg-gray-800/50 border border-gray-700 p-8 rounded-xl shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-16 h-16 bg-cyan-500/10 text-cyan-400 rounded-full flex items-center justify-center mb-6 border border-cyan-500/30">
+                            <i data-lucide="mic" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-3">Asistente de Voz <span class="text-xs bg-indigo-500 text-white px-2 py-1 rounded-full ml-2">Pronto</span></h3>
+                        <p class="text-gray-300">
+                            Añade tareas y recordatorios simplemente hablando. (Ej: "Recuérdame estudiar Taller de Software mañana a las 18 hs").
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Sección Equipo ===== -->
+        <section id="equipo" class="py-20 md:py-28 bg-gray-800/50">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-cyan-400 font-semibold tracking-wider uppercase">El Equipo</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-6">
+                        Creada por estudiantes, para estudiantes.
+                    </h2>
+                    <p class="text-lg text-gray-300">
+                        Somos el **"Grupo Halcon" (Comisión 1)**, estudiantes de la Tecnicatura de Análisis y Diseño de Software (FAEN - UNAF). Conocemos el problema porque lo vivimos todos los días.
+                    </p>
+                </div>
+
+                <!-- Grid de Miembros del Equipo -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                    <!-- Perfil 1 -->
+                    <div class="text-center">
+                        <img 
+                            src="https://placehold.co/200x200/1F2937/FFFFFF?text=Marcos" 
+                            alt="Foto de Marcos Cabrera" 
+                            class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700 shadow-lg"
+                            onerror="this.src='https://placehold.co/200x200/1F2937/FFFFFF?text=Error'"
+                        >
+                        <h4 class="text-xl font-semibold text-white">Marcos Cabrera</h4>
+                        <p class="text-cyan-400">Líder de Proyecto</p>
+                    </div>
+                    <!-- Perfil 2 -->
+                    <div class="text-center">
+                        <img 
+                            src="https://placehold.co/200x200/1F2937/FFFFFF?text=Leandro" 
+                            alt="Foto de Paez Leandro" 
+                            class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700 shadow-lg"
+                            onerror="this.src='https://placehold.co/200x200/1F2937/FFFFFF?text=Error'"
+                        >
+                        <h4 class="text-xl font-semibold text-white">Paez Leandro</h4>
+                        <p class="text-cyan-400">Programador</p>
+                    </div>
+                    <!-- Perfil 3 -->
+                    <div class="text-center">
+                        <img 
+                            src="https://placehold.co/200x200/1F2937/FFFFFF?text=Marcelo" 
+                            alt="Foto de Jara Marcelo" 
+                            class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700 shadow-lg"
+                            onerror="this.src='https://placehold.co/200x200/1F2937/FFFFFF?text=Error'"
+                        >
+                        <h4 class="text-xl font-semibold text-white">Jara Marcelo</h4>
+                        <p class="text-cyan-400">Programador</p>
+                    </div>
+                    <!-- Perfil 4 -->
+                    <div class="text-center">
+                        <img 
+                            src="https://placehold.co/200x200/1F2937/FFFFFF?text=Enzo" 
+                            alt="Foto de Galeano Enzo" 
+                            class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700 shadow-lg"
+                            onerror="this.src='https://placehold.co/200x200/1F2937/FFFFFF?text=Error'"
+                        >
+                        <h4 class="text-xl font-semibold text-white">Galeano Enzo</h4>
+                        <p class="text-cyan-400">Diseñador UX/UI</p>
+                    </div>
+                    <!-- Perfil 5 -->
+                    <div class="text-center col-span-2 md:col-span-1 lg:col-span-1 md:col-start-2 lg:col-start-auto">
+                        <img 
+                            src="https://placehold.co/200x200/1F2937/FFFFFF?text=Roberto" 
+                            alt="Foto de Arce Roberto" 
+                            class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700 shadow-lg"
+                            onerror="this.src='https://placehold.co/200x200/1F2937/FFFFFF?text=Error'"
+                        >
+                        <h4 class="text-xl font-semibold text-white">Arce Roberto</h4>
+                        <p class="text-cyan-400">Marketing & Comms</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Sección Registro (CTA Final) ===== -->
+        <section id="registro" class="py-20 md:py-32 bg-gray-900 relative overflow-hidden">
+            <!-- Efecto de fondo -->
+            <div class="absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/111827/111827?text=+'); background-attachment: fixed; opacity: 0.05;"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/3 h-2/3 bg-cyan-500/10 rounded-full filter blur-3xl opacity-40"></div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="bg-gray-800/60 backdrop-blur-lg border border-gray-700 rounded-2xl shadow-2xl p-8 md:p-12 max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-6">
+                        ¡Sé el primero en probarla!
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-8">
+                        Estamos lanzando la versión beta exclusivamente para la comunidad de la **UNAF**. Deja tu correo electrónico y te enviaremos una invitación prioritaria para descargar la app.
+                    </p>
+
+                    <!-- Formulario de Registro -->
+                    <form id="registro-form" class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
+                        <label for="email" class="sr-only">Tu Correo Electrónico</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="tu.correo@alumnos.unf.edu.ar" 
+                            required 
+                            class="flex-grow bg-gray-900 border border-gray-600 text-white rounded-full px-6 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 w-full"
+                        >
+                        <button 
+                            type="submit" 
+                            class="bg-cyan-500 text-gray-900 font-bold text-lg px-8 py-3 rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 cta-glow w-full md:w-auto"
+                        >
+                            ¡Registrarme!
+                        </button>
+                    </form>
+
+                    <!-- Mensaje de éxito (oculto) -->
+                    <div id="success-message" class="hidden mt-6 text-lg text-green-400 p-4 bg-green-900/50 rounded-lg border border-green-700">
+                        <i data-lucide="check-circle" class="inline-block w-6 h-6 mr-2"></i>
+                        ¡Gracias! Estás en la lista. Te avisaremos pronto.
+                    </div>
+
+                    <p class="text-sm text-gray-500 mt-6">
+                        Prometemos no enviar spam. Solo noticias sobre el lanzamiento.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+            <p>&copy; <span id="current-year"></span> Grupo Halcon (Comisión 1) - FAEN, UNAF. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2">Un proyecto para Administración y Gestión I.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript para interactividad -->
+    <script>
+        // Inicializa Lucide icons
+        lucide.createIcons();
+
+        // Lógica del Menú Móvil
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cierra el menú móvil al hacer clic en un enlace
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Cierra el menú móvil al hacer clic en un enlace del menú desktop (para enlaces de sección)
+        document.querySelectorAll('header nav a').forEach(link => {
+            if (link.getAttribute('href').startsWith('#')) {
+                link.addEventListener('click', () => {
+                    // Cierra el menú móvil si está abierto
+                    mobileMenu.classList.add('hidden');
+                });
+            }
+        });
+
+        // Lógica del Formulario de Registro
+        const registroForm = document.getElementById('registro-form');
+        const successMessage = document.getElementById('success-message');
+
+        registroForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Previene el envío real del formulario
+            
+            // Oculta el formulario y muestra el mensaje de éxito
+            registroForm.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+
+            // Opcional: limpiar el campo de email
+            document.getElementById('email').value = '';
+        });
+
+        // Setea el año actual en el footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    </script>
+</body>
+</html>
