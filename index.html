@@ -30,14 +30,15 @@
 
     <!-- ===== Header / Navegación ===== -->
     <header class="bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-700">
+    
+        <input type="checkbox" id="menu-toggle" class="hidden peer">
+
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo -->
             <a href="#" class="flex items-center space-x-2 text-2xl font-bold text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M12 2.69l.34.16a2.4 2.4 0 0 0-1.08 1.08L11.08 4 11 4.03l-.16.18a2.38 2.38 0 0 0-1.08 1.08L9.6 5.5l-.17.34a2.4 2.4 0 0 0 1.08 1.08L10.7 7l.21.08.18-.16a2.38 2.38 0 0 0 1.08-1.08l.17-.26.34-.17a2.4 2.4 0 0 0-1.08-1.08L12 2.7Z"></path><path d="m7 21 1.6-1.6"></path><path d="M14.2 15.2 18 11.4"></path><path d="M12.2 12.2 4 20.4"></path><path d="m11.4 18 3.8-3.8"></path><path d="M20.4 4 12.2 12.2"></path><path d="M1.6 11.6 3 10.2"></path><path d="m10.2 3-1.4 1.4"></path></svg>
-                <span class="tracking-tight">SmartMind</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M12 2.69l.34.16a2.4 2.4 0 0 0-1.08 1.08L11.08 4 11 4.03l-.16.18a2.38 2.38 0 0 0-1.08 1.08L9.6 5.5l-.17.34a2.4 2.4 0 0 0 1.08 1.08L10.7 7l.21.08.18-.16a2.38 2.38 0 0 0 1.08-1.08l.17-.26.34-.17a2.4 2.4 0 0 0-1.08-1.08L12 2.7Z"></path><path d="m7 21 1.6-1.6"></path><path d="M14.2 15.2 18 11.4"></path><path d="M12.2 12.2 4 20.4"></path><path d="m11.4 18 3.8-3.8"></path><path d="M20.4 4 12.2 12.2"></path><path d="M1.6 11.6 3 10.2"></path><path d="m10.2 3-1.4 1.4"></path></svg>
+            <span class="tracking-tight">SmartMind</span>
             </a>
 
-            <!-- Menú Desktop -->
             <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
                 <a href="#problema" class="text-gray-300 hover:text-cyan-400 transition-colors">El Problema</a>
                 <a href="#solucion" class="text-gray-300 hover:text-cyan-400 transition-colors">Solución</a>
@@ -46,22 +47,26 @@
                 <a href="#registro" class="bg-cyan-500 text-gray-900 font-semibold px-5 py-2 rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105">
                     ¡Regístrate!
                 </a>
+                <a href="https://app20251107124511ghiwtscgvm.preview.zoer.ai/login?redirect=%2F" class="bg-cyan-500 text-gray-900 font-semibold px-5 py-2 rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105"  target="_blank">
+                Probar Demo Online
+                </a>
             </div>
 
-            <!-- Botón Menú Móvil -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-cyan-400">
+            <label for="menu-toggle" class="md:hidden text-gray-300 hover:text-cyan-400 cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </button>
-        </nav>
+            </label>
+        </nav> 
 
-        <!-- Menú Móvil (Oculto) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-900/95 px-6 pt-2 pb-6 border-t border-gray-700">
+        <div id="mobile-menu" class="hidden peer-checked:block md:hidden bg-gray-900/95 px-6 pt-2 pb-6 border-t border-gray-700">
             <a href="#problema" class="block py-3 text-lg text-gray-300 hover:text-cyan-400 transition-colors">El Problema</a>
             <a href="#solucion" class="block py-3 text-lg text-gray-300 hover:text-cyan-400 transition-colors">Solución</a>
             <a href="#funciones" class="block py-3 text-lg text-gray-300 hover:text-cyan-400 transition-colors">Funciones</a>
             <a href="#equipo" class="block py-3 text-lg text-gray-300 hover:text-cyan-400 transition-colors">Equipo</a>
             <a href="#registro" class="block mt-4 text-center bg-cyan-500 text-gray-900 font-semibold px-6 py-3 rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105">
                 ¡Regístrate!
+            </a>
+            <a href="https://app20251107124511ghiwtscgvm.preview.zoer.ai/login?redirect=%2F" class="block mt-4 text-center bg-cyan-500 text-gray-900 font-bold text-lg m-10 max-w-auto px-8 py-4 rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 cta-glow" target="_blank">
+                Probar Demo Online
             </a>
         </div>
     </header>
@@ -84,11 +89,11 @@
                     La vida universitaria es caótica. Creamos un asistente inteligente que aprende de ti y te ayuda a conquistar tu semestre.
                 </p>
                 <ul class="flex flex-col md:flex-row justify-center gap-6">
-                    <li><a href="#registro" class="bg-cyan-500 text-gray-900 font-bold text-lg px-8 py-4 rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 cta-glow">
+                    <li><a href="#registro" class="block mt-4 text-center bg-cyan-500 text-gray-900 font-bold text-lg m-10 max-w-auto px-8 py-4 rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 cta-glow">
                             Unirme a la Beta
                         </a>
                     </li>
-                    <li><a href="https://app20251107124511ghiwtscgvm.preview.zoer.ai/login?redirect=%2F" class="bg-cyan-500 text-gray-900 font-bold text-lg m-10 max-w-60 px-8 py-4 rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 cta-glow" target="_blank">
+                    <li><a href="https://app20251107124511ghiwtscgvm.preview.zoer.ai/login?redirect=%2F" class="block mt-4 text-center bg-cyan-500 text-gray-900 font-bold text-lg m-10 max-w-auto px-8 py-4 rounded-full hover:bg-cyan-400 transition-all transform hover:scale-105 cta-glow" target="_blank">
                             Probar Demo Online
                         </a>
                     </li>
@@ -433,5 +438,6 @@
     </script>
 </body>
 </html>
+
 
 
